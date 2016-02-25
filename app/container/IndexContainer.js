@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import Message from '../component/Message';
 
 class IndexContainer extends Component {
