@@ -10,8 +10,10 @@ config.output.publicPath = '/static/';
 config.plugins = [
   new webpack.optimize.CommonsChunkPlugin('share.js'),
   new webpack.optimize.OccurenceOrderPlugin(),
-  new webpack.HotModuleReplacementPlugin(),
   new webpack.NoErrorsPlugin(),
+  new webpack.optimize.UglifyJsPlugin({
+    compress: { warnings: false },
+  }),
 ];
 
 module.exports = config;
