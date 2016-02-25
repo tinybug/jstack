@@ -11,4 +11,4 @@ class IndexContainer extends Component {
   }
 }
 
-export default IndexContainer
+export default IndexContainer;

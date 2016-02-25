@@ -15,4 +15,4 @@ App.propTypes = {
   children: PropTypes.node,
 };
 
-export default App
+export default App;

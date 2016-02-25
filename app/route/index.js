@@ -8,8 +8,8 @@ export default {
           require.ensure([], (require) => {
             cb(null, require('../container/IndexContainer'));
           });
-        }
-      }
-    }
-  ]
-}
+        },
+      },
+    },
+  ],
+};
