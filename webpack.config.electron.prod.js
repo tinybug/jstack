@@ -6,17 +6,13 @@ const config = Object.assign({}, baseConfig);
 config.entry = {
   bundle: './app/index.js',
 };
-config.output.chunkFilename = '[id].chunk.js';
-config.output.publicPath = '/static/';
+config.target = 'electron';
 config.plugins = [
-  new webpack.optimize.CommonsChunkPlugin('share.js'),
-  new webpack.optimize.OccurenceOrderPlugin(),
-  new webpack.NoErrorsPlugin(),
   new webpack.optimize.UglifyJsPlugin({
     compress: { warnings: false },
   }),
   new webpack.DefinePlugin({
-    'process.env.RUNTIME': '"web"',
+    'process.env.RUNTIME': '"electron"',
   }),
 ];
 

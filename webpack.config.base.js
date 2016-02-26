@@ -4,7 +4,6 @@ module.exports = {
   output: {
     path: path.join(__dirname, 'dist'),
     filename: '[name].js',
-    chunkFilename: '[id].chunk.js',
   },
   module: {
     loaders: [
