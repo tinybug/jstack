@@ -53,6 +53,7 @@ gulp.task('copy', () => {
     .pipe(gulp.dest('dist'));
 });
 
+let appPath = '';
 gulp.task('package', (cb) => {
   packager({
     dir: './dist',
@@ -63,17 +64,26 @@ gulp.task('package', (cb) => {
     version: '0.36.8',
     out: './build',
     overwrite: true,
-  }, (err, appPath) => {
+  }, (err, appPathArr) => {
     if (err) {
       console.log(err);
       process.exit(1);
     } else {
-      console.log(appPath);
+      console.log(appPathArr);
+      appPath = appPathArr[0];
       cb();
     }
   });
 });
 
+gulp.task('copyInstallerSpec', () => {
+  return gulp.src([
+    'spec/installer/img/icons/atom.icns',
+    'spec/installer/img/installer.png',
+    'spec/installer/package.json',
+  ]).pipe(gulp.dest(appPath));
+});
+
 gulp.task('default', (cb) => {
-  sequence('clean', 'setEnv', 'webpack', 'copy', 'package', cb);
+  sequence('clean', 'setEnv', 'webpack', 'copy', 'package', 'copyInstallerSpec', cb);
 });
