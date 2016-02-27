@@ -11,6 +11,7 @@ const webpackElectronProdConfig = require('./webpack.config.electron.prod');
 const packager = require('electron-packager');
 const del = require('del');
 const sequence = require('run-sequence');
+const innosetup = require('innosetup-compiler');
 
 gulp.task('clean', (cb) => {
   del(['./dist', './build', './installer']);
@@ -86,6 +87,21 @@ gulp.task('dmg', () => {
         },
       })
     );
+});
+
+gulp.task('exe', (cb) => {
+  return innosetup(
+    './spec/win/installer.iss',
+    {
+      O: './installer',
+    },
+    (err) => {
+      if(err) {
+        console.log(err);
+        process.exit(1);
+      }
+      cb();
+    });
 });
 
 gulp.task('default', (cb) => {

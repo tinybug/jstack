@@ -1,13 +1,12 @@
 {
-  "name": "frontend-dev-boilerplate",
+  "name": "fdb",
   "version": "1.0.0",
-  "description": "",
+  "description": "fdb",
   "main": "electron.js",
   "scripts": {
     "lint": "eslint app",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js",
-    "build": "build --appDir build/easub-darwin-x64"
+    "start": "node server.js"
   },
   "pre-commit": [
     "lint"
@@ -24,7 +23,6 @@
     "babel-loader": "^5.0.0",
     "del": "^2.2.0",
     "electron-packager": "^5.2.1",
-    "electron-winstaller": "^2.0.2",
     "eslint": "^1.10.3",
     "eslint-config-airbnb": "^3.1.0",
     "eslint-plugin-react": "^3.15.0",
@@ -42,6 +40,7 @@
     "webpack-hot-middleware": "^2.6.0"
   },
   "optionalDependencies": {
-    "appdmg": "^0.3.6"
+    "appdmg": "^0.3.6",
+    "innosetup-compiler": "^5.5.8"
   }
 }
