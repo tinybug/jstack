@@ -96,10 +96,11 @@ gulp.task('exe', (cb) => {
       O: './installer',
     },
     (err) => {
-      if(err) {
+      if (err) {
         console.log(err);
         process.exit(1);
       }
+
       cb();
     });
 });
