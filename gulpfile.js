@@ -13,7 +13,7 @@ const del = require('del');
 const sequence = require('run-sequence');
 
 gulp.task('clean', (cb) => {
-  del(['./dist', './build']);
+  del(['./dist', './build', './installer']);
   cb();
 });
 
@@ -53,11 +53,10 @@ gulp.task('copy', () => {
     .pipe(gulp.dest('dist'));
 });
 
-let appPath = '';
 gulp.task('package', (cb) => {
   packager({
     dir: './dist',
-    name: 'easub',
+    name: 'fdb',
     platform: process.env.PLATFORM,
     asar: true,
     arch: process.env.ARCH,
@@ -70,20 +69,25 @@ gulp.task('package', (cb) => {
       process.exit(1);
     } else {
       console.log(appPathArr);
-      appPath = appPathArr[0];
       cb();
     }
   });
 });
 
-gulp.task('copyInstallerSpec', () => {
-  return gulp.src([
-    'spec/installer/img/icons/atom.icns',
-    'spec/installer/img/installer.png',
-    'spec/installer/package.json',
-  ]).pipe(gulp.dest(appPath));
+gulp.task('dmg', () => {
+  return gulp.src('')
+    .pipe(gulpPkg.shell(
+      [
+        'mkdir -p ./installer',
+        'node_modules/.bin/appdmg ./spec/mac/appdmg.json <%= releaseDmg %>',
+      ], {
+        templateData: {
+          releaseDmg: './installer/fdb.dmg',
+        },
+      })
+    );
 });
 
 gulp.task('default', (cb) => {
-  sequence('clean', 'setEnv', 'webpack', 'copy', 'package', 'copyInstallerSpec', cb);
+  sequence('clean', 'setEnv', 'webpack', 'copy', 'package', cb);
 });

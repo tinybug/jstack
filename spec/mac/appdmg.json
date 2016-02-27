@@ -1,0 +1,15 @@
+{
+
+  "title": "FDB Installer",
+
+  "icon": "./atom.icns",
+
+  "background": "./background.png",
+
+  "icon-size": 220,
+
+  "contents": [
+    { "x": 140, "y": 190, "type": "file", "path": "../../build/fdb-darwin-x64/fdb.app" },
+    { "x": 455, "y": 190, "type": "link", "path": "/Applications" }
+  ]
+}
