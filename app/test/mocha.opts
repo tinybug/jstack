@@ -1,0 +1,4 @@
+--no-timeouts
+--require should
+--recursive
+--compilers js:babel-core/register

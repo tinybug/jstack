@@ -16,6 +16,7 @@ config.plugins = [
   new webpack.NoErrorsPlugin(),
   new webpack.DefinePlugin({
     'process.env.RUNTIME': '"web"',
+    'process.env.NODE_ENV': '"development"',
   }),
 ];
 

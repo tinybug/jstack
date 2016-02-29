@@ -1,15 +1,29 @@
-import React from 'react';
-import { Router } from 'react-router';
-import rootRoute from './routes';
-
 if (process.env.RUNTIME === 'web') {
-  const { browserHistory } = require('react-router');
-  module.exports = () => (
-    <Router history={browserHistory} routes={rootRoute} />
-  );
+  module.exports = {
+    component: require('../container/App'),
+    childRoutes: [
+      {
+        path: '/',
+        indexRoute: {
+          getComponent(location, cb) {
+            require.ensure([], (require) => {
+              cb(null, require('../container/IndexContainer'));
+            });
+          },
+        },
+      },
+    ],
+  };
 } else {
-  const { hashHistory } = require('react-router');
-  module.exports = () => (
-    <Router history={hashHistory} routes={rootRoute} />
-  );
+  module.exports = {
+    component: require('../container/App'),
+    childRoutes: [
+      {
+        path: '/',
+        indexRoute: {
+          component: require('../container/IndexContainer'),
+        },
+      },
+    ],
+  };
 }

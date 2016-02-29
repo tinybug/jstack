@@ -13,6 +13,7 @@ config.plugins = [
   }),
   new webpack.DefinePlugin({
     'process.env.RUNTIME': '"electron"',
+    'process.env.NODE_ENV': '"production"',
   }),
 ];
 
