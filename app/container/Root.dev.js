@@ -32,5 +32,5 @@ Root.propTypes = {
 };
 
 export default connect(
-  ({ application }) => ({ application }),
+  ({ application }) => ({ application })
 )(Root);
