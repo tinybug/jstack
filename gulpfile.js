@@ -80,7 +80,7 @@ gulp.task('dmg', () => {
     .pipe(gulpPkg.shell(
       [
         'mkdir -p ./installer',
-        'node_modules/.bin/appdmg ./spec/mac/appdmg.json <%= releaseDmg %>',
+        'node_modules/.bin/appdmg ./app/spec/mac/appdmg.json <%= releaseDmg %>',
       ], {
         templateData: {
           releaseDmg: './installer/fdb.dmg',
@@ -91,7 +91,7 @@ gulp.task('dmg', () => {
 
 gulp.task('exe', (cb) => {
   return innosetup(
-    './spec/win/installer.iss',
+    './app/spec/win/installer.iss',
     {
       O: './installer',
     },
