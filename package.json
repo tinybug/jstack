@@ -14,8 +14,10 @@
   "author": "jesse liu",
   "license": "MIT",
   "dependencies": {
+    "intl": "^1.1.0",
     "react": "^0.14.7",
     "react-dom": "^0.14.7",
+    "react-intl": "^2.0.0-pr-3",
     "react-redux": "^4.4.0",
     "react-router": "^2.0.0",
     "react-router-redux": "^4.0.0",

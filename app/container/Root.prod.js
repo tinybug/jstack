@@ -1,22 +1,32 @@
 import React, { Component, PropTypes } from 'react';
-import { Provider } from 'react-redux';
 import { Router } from 'react-router';
 import routes from '../route';
+import { connect } from 'react-redux';
+import { IntlProvider } from 'react-intl';
+import * as i18n from '../i18n';
 
-export default class Root extends Component {
+class Root extends Component {
   render() {
-    const { store, history } = this.props;
+    const { history, application: { locale } } = this.props;
+    const intlData = {
+      locale,
+      messages: i18n[locale],
+    };
     return (
-      <Provider store={store}>
-        <div>
+      <div>
+        <IntlProvider {...intlData}>
           <Router history={history} routes={routes} />
-        </div>
-      </Provider>
+        </IntlProvider>
+      </div>
     );
   }
 }
 
 Root.propTypes = {
-  store: PropTypes.object.isRequired,
   history: PropTypes.object.isRequired,
+  application: PropTypes.object.isRequired,
 };
+
+export default connect(
+  ({ application }) => ({ application })
+)(Root);

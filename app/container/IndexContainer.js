@@ -1,7 +1,25 @@
 import React, { Component, PropTypes } from 'react';
-import Message from '../component/Message';
 import { connect } from 'react-redux';
-import { sayYourName } from '../action';
+import * as appAction from '../action/application';
+import { defineMessages, FormattedMessage } from 'react-intl';
+
+const messages = defineMessages({
+  helloWorld: {
+    id: 'index.helloWorld',
+    description: 'hello world',
+    defaultMessage: 'hello world',
+  },
+  hello: {
+    id: 'index.hello',
+    description: 'hello',
+    defaultMessage: 'hello',
+  },
+  tellYourName: {
+    id: 'index.tellYourName',
+    description: 'tell your name',
+    defaultMessage: 'tell your name',
+  },
+});
 
 class IndexContainer extends Component {
   constructor(props) {
@@ -20,34 +38,32 @@ class IndexContainer extends Component {
   }
 
   render() {
-    const { name } = this.props;
+    const { application: { name } } = this.props;
     return (
       <div>
-        <Message msg="hello world" />
-        <div>tell me your name</div>
+        <div><FormattedMessage {...messages.helloWorld} /></div>
+        <div><FormattedMessage {...messages.tellYourName} /></div>
         <input type="text" ref={this.refInput} />
         <input
           type="button"
           value="submit"
           onClick={this.handleClick}
         />
-        {name ? <Message msg={`hello, ${name}`} /> : ''}
+        { name ?
+          <div><FormattedMessage {...messages.hello} />{`, ${name}`} </div>
+          : ''
+        }
       </div>
     );
   }
 }
 
 IndexContainer.propTypes = {
-  name: PropTypes.string.isRequired,
+  application: PropTypes.object.isRequired,
   sayYourName: PropTypes.func.isRequired,
 };
 
-function mapStateToProps(state) {
-  return {
-    name: state.reducer.name,
-  };
-}
-
-export default connect(mapStateToProps, {
-  sayYourName,
-})(IndexContainer);
+export default connect(
+  ({ application }) => ({ application }),
+  appAction
+)(IndexContainer);

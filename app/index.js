@@ -3,8 +3,21 @@ import { render } from 'react-dom';
 import Root from './container/Root';
 import configureStore from './store/configureStore';
 import { syncHistoryWithStore } from 'react-router-redux';
+import { Provider } from 'react-redux';
+import { addLocaleData } from 'react-intl';
+import zh from 'react-intl/lib/locale-data/zh';
+import en from 'react-intl/lib/locale-data/en';
 
-const store = configureStore();
+addLocaleData(zh);
+addLocaleData(en);
+
+const initialState = {
+  application: {
+    locale: 'zh',
+  },
+};
+
+const store = configureStore(initialState);
 
 let history = null;
 if (process.env.RUNTIME === 'web') {
@@ -15,4 +28,23 @@ if (process.env.RUNTIME === 'web') {
   history = syncHistoryWithStore(hashHistory, store);
 }
 
-render(<Root store={store} history={history} />, document.getElementById('app'));
+function start() {
+  render(
+    (
+      <Provider store={store}>
+        <Root history={history} />
+      </Provider>
+    ),
+    document.getElementById('app')
+  );
+}
+
+if (!global.Intl) {
+  require.ensure(['intl'], require => {
+    /* eslint-disable */
+    require('intl').default;
+    start();
+  }, 'IntlBundle');
+} else {
+  start();
+}

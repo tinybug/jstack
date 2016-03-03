@@ -1,18 +1,9 @@
-import * as ActionTypes from '../action';
 import { routerReducer as routing } from 'react-router-redux';
 import { combineReducers } from 'redux';
-
-function reducer(state = { name: '' }, action) {
-  switch (action.type) {
-    case ActionTypes.SAY_YOUR_NAME:
-      return Object.assign({}, state, { name: action.payload });
-    default:
-      return state;
-  }
-}
+import { application } from './application';
 
 const rootReducer = combineReducers({
-  reducer,
+  application,
   routing,
 });
 

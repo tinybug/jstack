@@ -105,6 +105,10 @@ gulp.task('exe', (cb) => {
     });
 });
 
-gulp.task('default', (cb) => {
-  sequence('clean', 'setEnv', 'webpack', 'copy', 'package', cb);
+gulp.task('default', ['setEnv'], (cb) => {
+  if (process.env.PLATFORM === 'darwin') {
+    sequence('clean', 'setEnv', 'webpack', 'copy', 'package', 'dmg', cb);
+  } else {
+    sequence('clean', 'setEnv', 'webpack', 'copy', 'package', 'exe', cb);
+  }
 });
