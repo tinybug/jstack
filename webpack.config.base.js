@@ -13,10 +13,6 @@ module.exports = {
         exclude: /node_modules/,
         include: __dirname,
       },
-      {
-        test: /\.less$/,
-        loader: 'style!css!less',
-      },
       { test: /\.(jpg|png)$/, loader: 'url?limit=8192' },
     ],
   },

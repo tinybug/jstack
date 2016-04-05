@@ -2,6 +2,7 @@
 /* eslint-disable */
 'use strict';
 
+require('./electron.env');
 const electron = require('electron');
 const app = electron.app;  
 const BrowserWindow = electron.BrowserWindow;  
@@ -17,7 +18,9 @@ app.on('ready', function() {
 
   mainWindow.loadURL('file://' + __dirname + '/electron.html');
 
-  mainWindow.webContents.openDevTools();
+  if (process.env.NODE_ENV === 'development') {
+    mainWindow.webContents.openDevTools();
+  }
 
   mainWindow.on('closed', function() {
     mainWindow = null;

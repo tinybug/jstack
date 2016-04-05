@@ -5,8 +5,8 @@ import configureStore from './store/configureStore';
 import { syncHistoryWithStore } from 'react-router-redux';
 import { Provider } from 'react-redux';
 import { addLocaleData } from 'react-intl';
-import zh from 'react-intl/lib/locale-data/zh';
-import en from 'react-intl/lib/locale-data/en';
+import zh from 'react-intl/locale-data/zh';
+import en from 'react-intl/locale-data/en';
 
 addLocaleData(zh);
 addLocaleData(en);

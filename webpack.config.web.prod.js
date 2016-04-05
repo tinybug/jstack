@@ -1,7 +1,8 @@
 const webpack = require('webpack');
 const baseConfig = require('./webpack.config.base');
+const _ = require('lodash');
 
-const config = Object.assign({}, baseConfig);
+const config = _.merge({}, baseConfig);
 
 config.entry = {
   bundle: './app/index.js',
