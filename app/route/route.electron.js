@@ -4,5 +4,6 @@ import { Route, IndexRoute } from 'react-router';
 export default (
   <Route path="/" component={require('../container/App')}>
     <IndexRoute component={require('../container/IndexContainer')} />
+    <Route path="/dashboard" component={require('../container/DashboardContainer')} />
   </Route>
 );

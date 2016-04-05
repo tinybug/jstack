@@ -7,6 +7,7 @@ import { Provider } from 'react-redux';
 import { addLocaleData } from 'react-intl';
 import zh from 'react-intl/locale-data/zh';
 import en from 'react-intl/locale-data/en';
+import history from './config/history';
 
 addLocaleData(zh);
 addLocaleData(en);
@@ -19,20 +20,13 @@ const initialState = {
 
 const store = configureStore(initialState);
 
-let history = null;
-if (process.env.RUNTIME === 'web') {
-  const { browserHistory } = require('react-router');
-  history = syncHistoryWithStore(browserHistory, store);
-} else {
-  const { hashHistory } = require('react-router');
-  history = syncHistoryWithStore(hashHistory, store);
-}
+const syncHistory = syncHistoryWithStore(history, store);
 
 function start() {
   render(
     (
       <Provider store={store}>
-        <Root history={history} />
+        <Root history={syncHistory} />
       </Provider>
     ),
     document.getElementById('app')
