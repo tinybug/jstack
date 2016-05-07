@@ -1,1 +1,1 @@
-my frontend dev boilerplate
+This repository is for recording something I learn from js.
