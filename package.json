@@ -4,9 +4,9 @@
   "description": "fdb",
   "main": "electron.js",
   "scripts": {
-    "lint": "eslint app",
+    "lint": "jscs app",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "webpack-dev-server --config webpack.config.web.dev.js --progress --colors --inline"
   },
   "pre-commit": [
     "lint"
@@ -30,9 +30,6 @@
     "babel-loader": "^5.0.0",
     "del": "^2.2.0",
     "electron-packager": "^5.2.1",
-    "eslint": "^1.10.3",
-    "eslint-config-airbnb": "^3.1.0",
-    "eslint-plugin-react": "^3.15.0",
     "express": "^4.13.4",
     "gulp": "^3.9.1",
     "gulp-env": "^0.4.0",
@@ -48,10 +45,7 @@
     "should": "^8.2.2",
     "webpack": "^1.12.14",
     "webpack-dev-middleware": "^1.4.0",
-    "webpack-hot-middleware": "^2.6.0"
-  },
-  "optionalDependencies": {
-    "appdmg": "^0.3.6",
-    "innosetup-compiler": "^5.5.8"
+    "webpack-hot-middleware": "^2.6.0",
+    "webpack-dev-server": "^1.14.1"
   }
 }

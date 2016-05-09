@@ -17,7 +17,7 @@ class IndexContainer extends Component {
     e.preventDefault();
     this.props.sayYourName(this._input.value);
   };
-  
+
   gotoDashboard = () => {
     history.push('/dashboard');
   };

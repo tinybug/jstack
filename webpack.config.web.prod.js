@@ -8,7 +8,7 @@ config.entry = {
   bundle: './app/index.js',
 };
 config.output.chunkFilename = '[id].chunk.js';
-config.output.publicPath = '/static/';
+config.output.publicPath = '/';
 config.plugins = [
   new webpack.optimize.CommonsChunkPlugin('share.js'),
   new webpack.optimize.OccurenceOrderPlugin(),

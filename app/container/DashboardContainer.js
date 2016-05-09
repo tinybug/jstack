@@ -6,7 +6,7 @@ class DashboardContainer extends Component {
       <div>
         dashboard container
       </div>
-    )
+    );
   }
 }
 

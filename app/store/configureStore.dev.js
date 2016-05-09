@@ -1,7 +1,6 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import createLogger from 'redux-logger';
 import rootReducer from '../reducer';
-import DevTools from '../container/DevTools';
 
 export default function configureStore(initialState) {
   const store = createStore(
@@ -9,7 +8,6 @@ export default function configureStore(initialState) {
     initialState,
     compose(
       applyMiddleware(createLogger()),
-      DevTools.instrument()
     )
   );
 

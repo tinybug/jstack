@@ -16,4 +16,4 @@ module.exports = {
       { test: /\.(jpg|png)$/, loader: 'url?limit=8192' },
     ],
   },
-};
+}
