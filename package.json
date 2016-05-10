@@ -2,7 +2,6 @@
   "name": "fdb",
   "version": "1.0.0",
   "description": "fdb",
-  "main": "electron.js",
   "scripts": {
     "lint": "jscs app",
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -23,14 +22,13 @@
     "react-router-redux": "^4.0.0",
     "redux": "^3.3.1",
     "redux-logger": "^2.6.0",
-    "lodash": "^4.8.2"
+    "lodash": "^4.8.2",
+    "restify": "^4.0.4"
   },
   "devDependencies": {
     "babel-core": "^5.4.7",
     "babel-loader": "^5.0.0",
     "del": "^2.2.0",
-    "electron-packager": "^5.2.1",
-    "express": "^4.13.4",
     "gulp": "^3.9.1",
     "gulp-env": "^0.4.0",
     "gulp-load-plugins": "^1.2.0",
